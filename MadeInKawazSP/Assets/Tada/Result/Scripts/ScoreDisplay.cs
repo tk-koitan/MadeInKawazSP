@@ -57,7 +57,7 @@ namespace Result
             text_.text = res;
 
             // 順位の表示量に応じてテキストのフォントサイズを変更する
-            text_.fontSize = 50 - 3 * score.Scores.Count;
+            text_.fontSize = 90 - 3 * score.Scores.Count;
         }
 
         private IEnumerator NamaeOmoitukan(float time)

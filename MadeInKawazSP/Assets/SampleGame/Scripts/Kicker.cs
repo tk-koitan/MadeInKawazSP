@@ -49,9 +49,9 @@ namespace SampleGame
                 fromPos = mousePos;
             }
 
-            if(Input.GetMouseButton(0) && !isKicked)
+            if (Input.GetMouseButton(0) && !isKicked)
             {
-                if((mousePos-fromPos).magnitude > 1)
+                if ((mousePos - fromPos).magnitude > 1)
                 {
                     isKicked = true;
                     ball.velocity = (mousePos - fromPos).normalized * speed;
@@ -60,7 +60,7 @@ namespace SampleGame
                 }
             }
 
-            ball.transform.localScale = Vector3.one * (0.4f + (-2.5f - ball.transform.position.y) / 50f);
+            ball.transform.localScale = Vector3.one * (0.15f - 0.25f * (ball.position.y - 4.1f) / 6.41f);
         }
     }
 }

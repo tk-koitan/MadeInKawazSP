@@ -37,7 +37,7 @@ namespace SampleGame
             {
                 velocity = 0;
                 GetComponent<SpriteRenderer>().sprite = spr;
-                transform.Translate(0, -2, 0);
+                transform.Translate(0, -1, 0);
             });
 
             //デバッグ用
