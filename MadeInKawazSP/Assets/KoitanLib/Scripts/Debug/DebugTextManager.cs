@@ -36,27 +36,20 @@ public class DebugTextManager : MonoBehaviour
         }
 
         //debugText.text = str();
-        if (Debug.isDebugBuild)
+        //実機のときのデバッグ表示非表示機能は廃止
+        //Scripting Define Symbolsで対応する
+        debugText.text = string.Empty;
+        for (int i = debugElements.Count - 1; i >= 0; i--)
         {
-            debugText.text = string.Empty;
-            for (int i = debugElements.Count - 1; i >= 0; i--)
+            //Triggerで削除
+            if (debugElements[i].removeTrigger())
             {
-                //Triggerで削除
-                if (debugElements[i].removeTrigger())
-                {
-                    debugElements.RemoveAt(i);
-                }
-                else
-                {
-                    debugText.text += debugElements[i].message();
-                }
+                debugElements.RemoveAt(i);
             }
-            /*
-            foreach (DebugElement e in debugElements)
+            else
             {
-                debugText.text += e.message();
+                debugText.text += debugElements[i].message();
             }
-            */
         }
     }
 
