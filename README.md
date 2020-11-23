@@ -1,8 +1,8 @@
-# MadeInKawaz
+# MadeInKawazSP
 これは、Kawaz学生部が新歓用に制作したフレームワーク、及びそれを使用したゲームです。
 
 ## Requirements
-- Unity 2019.2.8f1
+- Unity 2019.4.10f1
 
 ## ミニゲームの仕様
 - スマホでも遊べることを考慮して、入力はタッチ操作のみ
