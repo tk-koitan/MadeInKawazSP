@@ -30,7 +30,7 @@ namespace TadaGame1
         {
             //本ビルドと区別がないので今は無効
             //DebugBoxManager.Display(this).SetSize(200, 200).SetAlignment(TMPro.TextAlignmentOptions.Center);
-            DebugTextManager.Display(() => transform.position.x.ToString() + ((is_atari_) ? "当たり" : "はずれ") + "\n").AddRemoveTrigger(this);
+            DebugTextManager.Display(() => transform.position.x.ToString() + ", " + transform.position.y.ToString() + ((is_atari_) ? "当たり" : "はずれ") + "\n").AddRemoveTrigger(this);
             // sprite_ren_ = body.GetComponent<SpriteRenderer>();
             animator_ = body.GetComponent<Animator>();
             hit_box_ = body.GetComponent<BoxCollider2D>();
@@ -47,9 +47,12 @@ namespace TadaGame1
                     {
                         if (is_atari_)
                         {
-                            // 持ち上げる
-                            transform.position += Vector3.up * 0.5f;
-                            transform.DOMoveY(transform.position.y + 1f, 1f).SetEase(Ease.OutQuad);
+                            // 大きくする
+                            transform.DOScale(transform.localScale.x * 1.5f, 1f);
+
+                            // 持ち上げる                            
+                            //transform.position += Vector3.up * 0.5f;
+                            //transform.DOMoveY(transform.position.y + 1f, 1f).SetEase(Ease.OutQuad);
                         }
                         provider_.RequestResult(is_atari_);
                     }

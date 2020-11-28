@@ -58,7 +58,7 @@ namespace TadaGame2
                 predict_balls_[i] = Instantiate(predict_ball_prefab_, new Vector3(0f, 0f, 0f), Quaternion.identity);
             }
 
-            transform.DORotate(new Vector3(0, 0, -35f), rotate_period_).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+            transform.DORotate(new Vector3(0, 0, -20f), rotate_period_).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
         }
 
         // Update is called once per frame
