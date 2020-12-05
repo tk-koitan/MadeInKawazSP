@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    Rigidbody2D mRigidbody2D;
-
     [SerializeField]
     GameObject mStick;
     public float mBallRadius
@@ -14,12 +12,11 @@ public class Ball : MonoBehaviour
         private set;
     }
 
+    Rigidbody2D mRigidbody2D;
+
     [SerializeField]
     Wall mWall;
     MousePos mMousePos;
-
-    // マウスの一フレーム前の座標(クラスにして勝手に取ってほしい？これにBallから触れたくない)
-    //Vector3 oldPos;
 
     void Awake()
     {
@@ -52,11 +49,11 @@ public class Ball : MonoBehaviour
 
     void AddVelocity()
     {
-        mRigidbody2D.velocity += new Vector2(50f * xInput() * Time.deltaTime, 0f);
+        mRigidbody2D.velocity += new Vector2(50f * XInput() * Time.deltaTime, 0f);
     }
 
     //返り値は-1, 0, 1のいずれか
-    float xInput()
+    float XInput()
     {
         if (mMousePos.IsMouseXDragged()) return mMousePos.MouseXInput();
         return System.Math.Sign(Input.GetAxis("Horizontal"));

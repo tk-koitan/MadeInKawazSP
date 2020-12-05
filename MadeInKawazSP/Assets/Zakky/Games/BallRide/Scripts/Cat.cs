@@ -8,8 +8,10 @@ public class Cat : MonoBehaviour
     Ball mBall;
     Rigidbody2D mRigidbody2D;
 
+    //猫半径
     float mCatRadius;
 
+    //クリアタイマー
     ZakkyLib.Timer mClearTimer;
     
     // Start is called before the first frame update
@@ -54,12 +56,7 @@ public class Cat : MonoBehaviour
         if (IsOnBall())
         {
             //猫が浮いてるときボールと猫の距離常に一定
-            if (IsCatFlying())
-            {
-                //にする
-                CatClamp();
-            }
-
+            if (IsCatFlying()) CatClamp();
             //猫をボールの中心向かせる
             CatRotation();
         }
