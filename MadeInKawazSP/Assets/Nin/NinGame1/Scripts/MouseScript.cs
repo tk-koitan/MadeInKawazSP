@@ -39,11 +39,11 @@ public class MouseScript : MonoBehaviour
             {
                 Move();
             }
-            if (transform.position.x < -6 || cat.position.x < -4)
+            if (transform.position.x < -3 || cat.position.x < -2)
             {
                 transform.parent = cat;
                 isFinished = true;
-                if (transform.position.x < -6)
+                if (transform.position.x < -3)
                     isWin = true;
             }
         }
@@ -60,7 +60,7 @@ public class MouseScript : MonoBehaviour
 
     void Move()
     {
-        transform.position += new Vector3(-2, 0, 0);
+        transform.position += new Vector3(-0.5f, 0, 0);
         spriteVersion++;
         if (spriteVersion > 3)
             spriteVersion = 0;
