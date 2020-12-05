@@ -52,7 +52,8 @@ namespace yoke
 
             if (Input.GetMouseButton(0))
             {
-                transform.Translate(mousePos - oldPos);
+                transform.position += mousePos - oldPos;
+                //transform.Translate(mousePos - oldPos);
 
                 //画面外に出ないように
                 transform.position = new Vector3(Mathf.Clamp(transform.position.x, -width, width), Mathf.Clamp(transform.position.y, -height, height));
