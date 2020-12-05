@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour
     }
 
     [SerializeField]
-    float mSideWall;
+    Wall mWall;
 
     // マウスの一フレーム前の座標(クラスにして勝手に取ってほしい？)
     Vector3 oldPos;
@@ -29,6 +29,7 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mWall = new Wall(this);
         mRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
@@ -79,17 +80,17 @@ public class Ball : MonoBehaviour
 
     void ScreenClamp()
     {
-        if (-ContactWallPosX() > transform.position.x && mRigidbody2D.velocity.x < 0f)
+        if (-mWall.ContactWallPosX() > transform.position.x && mRigidbody2D.velocity.x < 0f)
         {
             Vector3 vec = transform.position;
-            vec.x = -ContactWallPosX();
+            vec.x = -mWall.ContactWallPosX();
             transform.position = vec;
             mRigidbody2D.velocity = Vector2.zero;
         }
-        else if (ContactWallPosX() < transform.position.x && mRigidbody2D.velocity.x > 0f)
+        else if (mWall.ContactWallPosX() < transform.position.x && mRigidbody2D.velocity.x > 0f)
         {
             Vector3 vec = transform.position;
-            vec.x = ContactWallPosX();
+            vec.x = mWall.ContactWallPosX();
             transform.position = vec;
             mRigidbody2D.velocity = Vector2.zero;
         }
@@ -106,8 +107,22 @@ public class Ball : MonoBehaviour
         else return Mathf.Sign(a);
     }
 
-    float ContactWallPosX()
+    [System.Serializable]
+    public class Wall
     {
-        return Mathf.Max(0f, mSideWall - mBallRadius);
+        Ball mBall;
+
+        [SerializeField]
+        float mSideWall = 4f;
+
+        public Wall(Ball mBall)
+        {
+            this.mBall = mBall;
+        }
+
+        public float ContactWallPosX()
+        {
+            return Mathf.Max(0f, mSideWall - mBall.mBallRadius);
+        }
     }
 }

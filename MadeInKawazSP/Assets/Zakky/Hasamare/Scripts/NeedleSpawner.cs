@@ -6,30 +6,40 @@ public class NeedleSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject Needle;
-    int sum = 0;
+    //int sum = 0;
+    const int needleSum = 4;
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 4; i++)
+        NeedleGenerator();
+    }
+
+    void NeedleGenerator()
+    {
+        int leftSum = 0, rightSum = 0;
+        for (int i = 0; i < needleSum; i++)
         {
-            if (sum == -(4 - 1) || (Random.Range(0, 2) == 0 && sum != 4 - 1))
+            if (IsNeedleRight())
             {
-                sum++;
+                rightSum++;
                 GameObject obj = Instantiate(Needle, new Vector2(1.7f * (1.5f - 1 * i), -5f), Quaternion.identity);
-                obj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5f / 4);
+                obj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5f / needleSum);
             }
             else
             {
-                sum--;
+                leftSum++;
                 GameObject obj = Instantiate(Needle, new Vector2(1.7f * (1.5f - 1 * i), 5f), Quaternion.identity);
-                obj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -5f / 4);
+                obj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -5f / needleSum);
             }
         }
-    }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //
-    //}
+        bool IsNeedleRight()
+        {
+            if (leftSum == needleSum - 1) return true;
+            if (rightSum == needleSum - 1) return false;
+
+            if (Random.Range(0, 2) == 1) return true;
+            else return false;
+        }
+    }
 }
