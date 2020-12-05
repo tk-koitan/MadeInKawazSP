@@ -38,7 +38,7 @@ namespace yoke
 
             moveSpeed = Random.Range(moveSpeedRange.x, moveSpeedRange.y);
             StartCoroutine(BulletShot(n_way, dir_diff, interval));
-            transform.position = new Vector2(transform.position.x, Random.Range(-height, height));
+            transform.position = new Vector2( Random.Range(-height, height),transform.position.y);
         }
 
         // Update is called once per frame
@@ -60,18 +60,18 @@ namespace yoke
                     GameObject bulletObj = pool.GetInstance();
                     Vector3 pos = transform.position;
                     bulletObj.transform.position = new Vector3(pos.x, pos.y, 0f);
-                    bulletObj.GetComponent<BulletController>().Init(Quaternion.Euler(0f, 0f, dir * i) * Vector2.left);
+                    bulletObj.GetComponent<BulletController>().Init(Quaternion.Euler(0f, 0f, dir * i) * Vector2.down);
                 }
             }
         }
         private void Move()
         {
-            transform.position += Vector3.up * moveSpeed * dir * Time.deltaTime;
-            if(transform.position.y >= height)
+            transform.position += Vector3.right * moveSpeed * dir * Time.deltaTime;
+            if(transform.position.x >= height)
             {
                 dir = -1f;
             }
-            else if(transform.position.y <= -height)
+            else if(transform.position.x <= -height)
             {
                 dir = 1f;
             }

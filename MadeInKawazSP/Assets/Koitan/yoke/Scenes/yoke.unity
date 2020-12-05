@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -127,20 +128,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4445182215674860578, guid: b1b26f818abc6427e81746d02b7cb4d1,
-        type: 3}
-      propertyPath: m_Name
-      value: Gesture Hand
-      objectReference: {fileID: 0}
     - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.29
+      value: -3.47
       objectReference: {fileID: 0}
     - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
         type: 3}
@@ -187,6 +183,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860578, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_Name
+      value: Gesture Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860579, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 270edaf6c00974ecf8f2200502aaf061, type: 2}
     - target: {fileID: 4445182215689491645, guid: b1b26f818abc6427e81746d02b7cb4d1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -197,11 +218,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4445182215674860579, guid: b1b26f818abc6427e81746d02b7cb4d1,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 270edaf6c00974ecf8f2200502aaf061, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1b26f818abc6427e81746d02b7cb4d1, type: 3}
 --- !u!1 &1013465031
@@ -236,8 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80cf2ec1c6d414df79db19cefd333aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 7
-  height: 4.5
+  width: 2.5
+  height: 4
   gestureHand: {fileID: 1900159968}
   burstObj: {fileID: 100010, guid: 3f68813a682ba411ab6cc7a560661761, type: 3}
 --- !u!212 &1013465033
@@ -254,6 +270,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -296,14 +313,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013465031}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.88, y: 0.48, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.19, y: -3.3, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 1272338532}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!50 &1013465035
 Rigidbody2D:
   serializedVersion: 4
@@ -372,6 +389,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -416,7 +434,7 @@ Transform:
   m_GameObject: {fileID: 1112801601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.571963, y: 2.5719628, z: 2.5719628}
+  m_LocalScale: {x: 1.7264817, y: 1.7264816, z: 1.7264816}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -455,6 +473,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -497,13 +516,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159001685}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.11, y: 1.35, z: 0}
-  m_LocalScale: {x: 0.3270754, y: 0.3270754, z: 0.3270754}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 3.9, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &1159001688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +539,7 @@ MonoBehaviour:
   dir_diff: 30
   interval: 0.6
   bullet: {fileID: -2457778353747047154, guid: cf35392019996d54d960c7e8c9140335, type: 3}
-  height: 4.5
+  height: 2.5
   moveSpeedRange: {x: 2, y: 3}
 --- !u!114 &1159001689
 MonoBehaviour:
@@ -679,6 +698,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
