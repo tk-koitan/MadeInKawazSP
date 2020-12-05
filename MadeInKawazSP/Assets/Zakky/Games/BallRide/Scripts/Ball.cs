@@ -16,9 +16,10 @@ public class Ball : MonoBehaviour
 
     [SerializeField]
     Wall mWall;
+    MousePos mMousePos;
 
-    // マウスの一フレーム前の座標(クラスにして勝手に取ってほしい？)
-    Vector3 oldPos;
+    // マウスの一フレーム前の座標(クラスにして勝手に取ってほしい？これにBallから触れたくない)
+    //Vector3 oldPos;
 
     void Awake()
     {
@@ -31,6 +32,7 @@ public class Ball : MonoBehaviour
     {
         mRigidbody2D = GetComponent<Rigidbody2D>();
         mWall = new Wall(this);
+        mMousePos = new MousePos();
     }
 
     // Update is called once per frame
@@ -56,26 +58,8 @@ public class Ball : MonoBehaviour
     //返り値は-1, 0, 1のいずれか
     float xInput()
     {
-        float vel = SignOrZero(Input.GetAxis("Horizontal"));
-
-        Vector3 touchScreenPosition = Input.mousePosition;
-
-        // 10.0fに深い意味は無い。画面に表示したいので適当な値を入れてカメラから離そうとしているだけ.
-        touchScreenPosition.z = 1.0f;
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(touchScreenPosition);
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            oldPos = mousePos;
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            vel = SignOrZero(mousePos.x - oldPos.x);
-            oldPos = mousePos;
-        }
-
-        return vel;
+        if (mMousePos.IsMouseXDragged()) return mMousePos.MouseXInput();
+        return System.Math.Sign(Input.GetAxis("Horizontal"));
     }
 
     void ScreenClamp()
@@ -101,12 +85,6 @@ public class Ball : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * -transform.position.x / mBallRadius);
     }
 
-    float SignOrZero(float a)
-    {
-        if (a == 0) return 0;
-        else return Mathf.Sign(a);
-    }
-
     [System.Serializable]
     public class Wall
     {
@@ -123,6 +101,58 @@ public class Ball : MonoBehaviour
         public float ContactWallPosX()
         {
             return Mathf.Max(0f, mSideWall - mBall.mBallRadius);
+        }
+    }
+
+    public class MousePos
+    {
+        Vector3 mOldPos;
+        Vector3 mCurrentPos;
+
+        float mXInput;
+        float mTime;
+
+        public MousePos()
+        {
+            mTime = Time.time;
+        }
+
+        //返り値は-1, 0, 1のいずれか
+        public float MouseXInput()
+        {
+            if (mTime != Time.time)
+            {
+                mTime = Time.time;
+
+                float result = 0f;
+                mCurrentPos = CurrentMousePos();
+
+                if (Input.GetMouseButton(0))
+                {
+                    result = System.Math.Sign(mCurrentPos.x - mOldPos.x);
+                }
+
+                mOldPos = CurrentMousePos();
+
+                mXInput = result;
+            }
+            return mXInput;
+        }
+
+        Vector3 CurrentMousePos()
+        {
+            Vector3 touchScreenPosition = Input.mousePosition;
+
+            // 1.0fに深い意味は無い。でもとるとなんかバグる
+            touchScreenPosition.z = 10.0f;
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(touchScreenPosition);
+
+            return mousePos;
+        }
+
+        public bool IsMouseXDragged()
+        {
+            return MouseXInput() != 0;
         }
     }
 }
