@@ -11,12 +11,15 @@ public class Ball : MonoBehaviour
         private set;
     }
 
+    [SerializeField]
+    float mSideWall = 0f;
+
     // マウスの一フレーム前の座標(クラスにして勝手に取ってほしい？)
     Vector3 oldPos;
 
     void Awake()
     {
-        transform.position = new Vector3(Random.Range(-1f, 1f), -1f, 0f);
+        transform.position = new Vector3(Random.Range(-1f, 1f), -2.5f, 0f);
     }
 
     // Start is called before the first frame update
@@ -24,6 +27,8 @@ public class Ball : MonoBehaviour
     {
         mRigidbody2D = GetComponent<Rigidbody2D>();
         mBallRadius = GetComponent<CircleCollider2D>().radius * transform.localScale.x;
+
+        mSideWall = Mathf.Max(mBallRadius, mSideWall);
     }
 
     // Update is called once per frame
@@ -43,7 +48,7 @@ public class Ball : MonoBehaviour
 
     void AddVelocity()
     {
-        mRigidbody2D.velocity += new Vector2(100f * xInput() * Time.deltaTime, 0f);
+        mRigidbody2D.velocity += new Vector2(50f * xInput() * Time.deltaTime, 0f);
     }
 
     //返り値は-1, 0, 1のいずれか
@@ -73,17 +78,17 @@ public class Ball : MonoBehaviour
 
     void ScreenClamp()
     {
-        if (-11f + mBallRadius > transform.position.x && mRigidbody2D.velocity.x < 0f)
+        if (-mSideWall + mBallRadius > transform.position.x && mRigidbody2D.velocity.x < 0f)
         {
             Vector3 vec = transform.position;
-            vec.x = -11f + mBallRadius;
+            vec.x = -mSideWall + mBallRadius;
             transform.position = vec;
             mRigidbody2D.velocity = Vector2.zero;
         }
-        else if (11f - mBallRadius < transform.position.x && mRigidbody2D.velocity.x > 0f)
+        else if (mSideWall - mBallRadius < transform.position.x && mRigidbody2D.velocity.x > 0f)
         {
             Vector3 vec = transform.position;
-            vec.x = 11f - mBallRadius;
+            vec.x = mSideWall - mBallRadius;
             transform.position = vec;
             mRigidbody2D.velocity = Vector2.zero;
         }
