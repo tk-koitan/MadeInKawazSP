@@ -44,7 +44,7 @@ namespace Hitode
         void Generate()
         {
             Vector3 generatePos = new Vector3(Random.Range(0.0f, screenW + 4.0f), screenH + 2.0f);
-            Vector3 dir = new Vector3(Random.Range(-1.0f, -0.5f), -1.0f);
+            Vector3 dir = new Vector3(Random.Range(-0.6f, -0.2f), -1.0f);
             GameObject newHitode = pool.GetInstance();
             newHitode.GetComponent<SpriteRenderer>().sprite = hitodeSprites[Random.Range(0, hitodeSprites.Length)];
             newHitode.GetComponent<HitodeContoroller>().Initialize(generatePos, dir, 30.0f);

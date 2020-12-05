@@ -19,7 +19,7 @@ namespace Hitode
         {
             screenH = Camera.main.orthographicSize + 0.5f;
             screenW = screenH * Camera.main.aspect + 0.5f;
-            dir = new Vector3(-1.0f, -1.0f).normalized;
+            dir = new Vector3(Random.Range(-0.6f, -0.2f), -1.0f);
             rb = gameObject.GetComponent<Rigidbody2D>();
         }
 
