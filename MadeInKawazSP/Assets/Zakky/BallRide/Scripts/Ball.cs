@@ -5,6 +5,9 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     Rigidbody2D mRigidbody2D;
+
+    [SerializeField]
+    GameObject mStick;
     public float mBallRadius
     {
         get;
@@ -19,14 +22,14 @@ public class Ball : MonoBehaviour
 
     void Awake()
     {
-        transform.position = new Vector3(Random.Range(-1f, 1f), -2.5f, 0f);
+        mBallRadius = GetComponent<CircleCollider2D>().radius * transform.localScale.x;
+        transform.position = new Vector3(Random.Range(-1f, 1f), mStick.transform.position.y + mBallRadius, 0f);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         mRigidbody2D = GetComponent<Rigidbody2D>();
-        mBallRadius = GetComponent<CircleCollider2D>().radius * transform.localScale.x;
 
         mSideWall = Mathf.Max(mBallRadius, mSideWall);
     }
