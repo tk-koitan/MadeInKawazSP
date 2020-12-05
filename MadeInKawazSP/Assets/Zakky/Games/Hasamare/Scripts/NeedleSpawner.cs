@@ -6,7 +6,6 @@ public class NeedleSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject Needle;
-    //int sum = 0;
     const int needleSum = 4;
     // Start is called before the first frame update
     void Start()

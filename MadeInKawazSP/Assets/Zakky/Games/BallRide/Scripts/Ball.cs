@@ -29,8 +29,8 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mWall = new Wall(this);
         mRigidbody2D = GetComponent<Rigidbody2D>();
+        mWall = new Wall(this);
     }
 
     // Update is called once per frame
@@ -61,7 +61,7 @@ public class Ball : MonoBehaviour
         Vector3 touchScreenPosition = Input.mousePosition;
 
         // 10.0fに深い意味は無い。画面に表示したいので適当な値を入れてカメラから離そうとしているだけ.
-        touchScreenPosition.z = 10.0f;
+        touchScreenPosition.z = 1.0f;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(touchScreenPosition);
 
         if (Input.GetMouseButtonDown(0))
