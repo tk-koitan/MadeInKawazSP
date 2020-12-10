@@ -60,7 +60,7 @@ public class MouseScript : MonoBehaviour
 
     void Move()
     {
-        transform.position += new Vector3(-0.5f, 0, 0);
+        transform.position += new Vector3(-1f, 0, 0);
         spriteVersion++;
         if (spriteVersion > 3)
             spriteVersion = 0;

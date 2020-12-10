@@ -537,7 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   n_way: 5
   dir_diff: 30
-  interval: 0.6
+  interval: 1
   bullet: {fileID: -2457778353747047154, guid: cf35392019996d54d960c7e8c9140335, type: 3}
   height: 2.5
   moveSpeedRange: {x: 2, y: 3}
