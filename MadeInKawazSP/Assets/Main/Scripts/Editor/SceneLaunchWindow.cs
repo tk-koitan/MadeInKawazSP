@@ -46,8 +46,10 @@
                 string sceneName = strs[strs.Length - 1].Replace(".unity", string.Empty);
                 if (GUILayout.Button(sceneName))
                 {
-                    EditorApplication.SaveScene();//危険かも
-                    EditorSceneManager.OpenScene(scene.path);
+                    if(EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+                    {     
+                        EditorSceneManager.OpenScene(scene.path);
+                    }
                 }
             }
             EditorGUILayout.EndScrollView();
