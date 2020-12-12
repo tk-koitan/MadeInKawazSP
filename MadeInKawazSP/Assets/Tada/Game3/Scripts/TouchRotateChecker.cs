@@ -46,7 +46,7 @@ namespace TadaGame3
 
                     float distance_rate = Vector2.SqrMagnitude(cur_dif) / Vector2.SqrMagnitude(prev_dif);
 
-                    length_ += rotate_dif * rotate_power_ * distance_rate;
+                    length_ += rotate_dif * rotate_power_;// * distance_rate;
 
                     prev_pos_ = cur_pos;
                 }
