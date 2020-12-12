@@ -6,6 +6,8 @@ public class Cat : MonoBehaviour
 {
     [SerializeField]
     Ball mBall;
+    [SerializeField]
+    Transform mStickTrans;
     Rigidbody2D mRigidbody2D;
 
     //猫半径
@@ -99,6 +101,6 @@ public class Cat : MonoBehaviour
     void ClearCheck()
     {
         //とりあえずクリア書いた
-        if (mClearTimer.IsTimeout() && transform.position.y > -3.5f) GameManager.Clear();
+        if (mClearTimer.IsTimeout() && mStickTrans.position.y > -3.5f) GameManager.Clear();
     }
 }

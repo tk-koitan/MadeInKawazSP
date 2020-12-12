@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     [SerializeField]
-    GameObject mStick;
+    Transform mStickTrans;
     public float mBallRadius
     {
         get;
@@ -21,7 +21,7 @@ public class Ball : MonoBehaviour
     void Awake()
     {
         mBallRadius = GetComponent<CircleCollider2D>().radius * transform.localScale.x;
-        transform.position = new Vector3(Random.Range(-1f, 1f), mStick.transform.position.y + mBallRadius, 0f);
+        transform.position = new Vector3(Random.Range(-1f, 1f), mStickTrans.position.y + mBallRadius, 0f);
     }
 
     // Start is called before the first frame update
