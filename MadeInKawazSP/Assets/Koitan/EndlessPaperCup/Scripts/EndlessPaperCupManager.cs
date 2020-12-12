@@ -144,7 +144,7 @@ namespace EndlessPaperCup
             //CupClose(cup);
             CupOpen(cups[ansNum]);
             itemEff.SetActive(true);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             /*
             for (int i = 0; i < cupCount; i++)
             {
