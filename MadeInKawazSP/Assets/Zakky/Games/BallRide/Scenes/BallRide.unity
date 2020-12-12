@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mStickTrans: {fileID: 2101810557}
+  mGestureHand: {fileID: 1928363201}
   mWall:
     mSideWall: 100
 --- !u!50 &13160722
@@ -286,6 +287,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTrans: {fileID: 13160725}
+--- !u!1001 &417841482
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860578, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_Name
+      value: Gesture Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860579, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d6d944a4b7dac4a83bc83bba233818e4, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1b26f818abc6427e81746d02b7cb4d1, type: 3}
 --- !u!1 &545217384
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +681,12 @@ Transform:
   m_Father: {fileID: 1950924778}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1928363201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4445182215674860578, guid: b1b26f818abc6427e81746d02b7cb4d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 417841482}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1950924777
 GameObject:
   m_ObjectHideFlags: 0
