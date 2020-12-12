@@ -6,6 +6,8 @@ public class Ball : MonoBehaviour
 {
     [SerializeField]
     Transform mStickTrans;
+    [SerializeField]
+    GameObject mGestureHand;
     public float mBallRadius
     {
         get;
@@ -36,6 +38,8 @@ public class Ball : MonoBehaviour
     void Update()
     {
         BallMove();
+
+        SetGestureHandNonActive();
     }
 
     void BallMove() 
@@ -50,6 +54,11 @@ public class Ball : MonoBehaviour
     void AddVelocity()
     {
         mRigidbody2D.velocity += new Vector2(50f * XInput() * Time.deltaTime, 0f);
+    }
+
+    void SetGestureHandNonActive()
+    {
+        if (XInput() != 0) mGestureHand.SetActive(false);
     }
 
     //返り値は-1, 0, 1のいずれか
