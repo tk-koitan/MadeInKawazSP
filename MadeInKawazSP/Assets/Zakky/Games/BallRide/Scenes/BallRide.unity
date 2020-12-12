@@ -302,7 +302,7 @@ PrefabInstance:
     - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4445182215674860576, guid: b1b26f818abc6427e81746d02b7cb4d1,
         type: 3}
@@ -363,7 +363,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: d6d944a4b7dac4a83bc83bba233818e4, type: 2}
+      objectReference: {fileID: 9100000, guid: 3723c1922e2d90a4eb92e5e4375d70d3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1b26f818abc6427e81746d02b7cb4d1, type: 3}
 --- !u!1 &545217384

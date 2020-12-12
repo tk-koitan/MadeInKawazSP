@@ -113,7 +113,6 @@ public class Ball : MonoBehaviour
     public class MousePos
     {
         Vector3 mOldPos;
-        Vector3 mCurrentPos;
 
         float mXInput;
         float mTime;
@@ -131,11 +130,10 @@ public class Ball : MonoBehaviour
                 mTime = Time.time;
 
                 float result = 0f;
-                mCurrentPos = CurrentMousePos();
 
                 if (Input.GetMouseButton(0))
                 {
-                    result = System.Math.Sign(mCurrentPos.x - mOldPos.x);
+                    result = System.Math.Sign(CurrentMousePos().x - mOldPos.x);
                 }
 
                 mOldPos = CurrentMousePos();
@@ -150,10 +148,10 @@ public class Ball : MonoBehaviour
             Vector3 touchScreenPosition = Input.mousePosition;
 
             // 1.0fに深い意味は無い。でもとるとなんかバグる
-            touchScreenPosition.z = 10.0f;
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(touchScreenPosition);
+            //touchScreenPosition.z = 10.0f;
+            //Vector3 mousePos = Camera.main.ScreenToWorldPoint(touchScreenPosition);
 
-            return mousePos;
+            return touchScreenPosition;
         }
 
         public bool IsMouseXDragged()
