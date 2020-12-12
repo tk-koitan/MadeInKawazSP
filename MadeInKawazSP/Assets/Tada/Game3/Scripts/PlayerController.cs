@@ -13,6 +13,9 @@ namespace TadaGame3
 
         private bool destoryed_ = false;
 
+        [SerializeField]
+        private TouchRotateChecker checker_;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -26,7 +29,7 @@ namespace TadaGame3
 
             if (destoryed_) return;
 
-            if(timer_ > 3.8f)
+            if(timer_ > 3.9f)
             {
                 GameManager.Clear();
             }
@@ -34,12 +37,14 @@ namespace TadaGame3
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.tag == "Enemy")
+            if (collision.tag == "Enemy")
             {
                 burst_eff_.gameObject.SetActive(true);
+                burst_eff_.Play();
                 GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<CircleCollider2D>().enabled = false;
                 destoryed_ = true;
+                checker_.enabled = false;
             }
         }
     }

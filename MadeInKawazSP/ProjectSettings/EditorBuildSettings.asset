@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Tada/Game2/Scenes/TadaGame2.unity
     guid: e1a668e2c1762644bbe7db2c490c08dd
   - enabled: 1
+    path: Assets/Tada/Game3/Scenes/TadaGame3.unity
+    guid: 14a89da1a22b717418e123f21dc710b9
+  - enabled: 1
     path: Assets/Tada/Result/Scene/ResultScene.unity
     guid: 0585f500338dc3e41a1e0f324412205c
   - enabled: 1
