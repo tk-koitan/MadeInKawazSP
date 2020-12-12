@@ -180,7 +180,7 @@ MonoBehaviour:
   m_text: +1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2588ba2c859e64936b86479d819bdd62, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: b66f466cc8c89408083510a1f55725c6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c927955401347498d97757da7fc203b3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_text: x2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2588ba2c859e64936b86479d819bdd62, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: b66f466cc8c89408083510a1f55725c6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c927955401347498d97757da7fc203b3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1415,7 +1415,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
