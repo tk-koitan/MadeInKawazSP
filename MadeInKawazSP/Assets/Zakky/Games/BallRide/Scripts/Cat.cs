@@ -101,6 +101,6 @@ public class Cat : MonoBehaviour
     void ClearCheck()
     {
         //とりあえずクリア書いた
-        if (mClearTimer.IsTimeout() && mStickTrans.position.y > -3.5f) GameManager.Clear();
+        if (mClearTimer.IsTimeout() && transform.position.y > mStickTrans.position.y) GameManager.Clear();
     }
 }
