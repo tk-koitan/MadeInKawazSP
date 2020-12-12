@@ -67,7 +67,7 @@ public class AspectChanger : MonoBehaviour
 
     public void ChangeResolution(int widthResolution)
     {
-        Screen.SetResolution(widthResolution * 9 / 16, widthResolution * 9 / 16 * defaultHeight / defaultWidth, Screen.fullScreen);
+        Screen.SetResolution(widthResolution * 16 / 9 * defaultWidth / defaultHeight, widthResolution * 16 / 9, Screen.fullScreen);
     }
 
     public void ChangeDefaultResolution()
