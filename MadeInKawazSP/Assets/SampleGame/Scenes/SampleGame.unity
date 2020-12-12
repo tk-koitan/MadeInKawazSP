@@ -1574,5 +1574,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gesture Hand
       objectReference: {fileID: 0}
+    - target: {fileID: 4445182215674860579, guid: b1b26f818abc6427e81746d02b7cb4d1,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 18ee76db86967479f85c57d935df4a67, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1b26f818abc6427e81746d02b7cb4d1, type: 3}
