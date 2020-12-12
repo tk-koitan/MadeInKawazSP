@@ -17,14 +17,14 @@ public class CatCamera : MonoBehaviour
             Vector3 tmp = transform.position;
             tmp.x = PlayerTrans.position.x - CameraXLimit;
             //transform.position = tmp;
-            transform.DOLocalMove(tmp, 0.2f);
+            transform.DOLocalMove(tmp, 0.3f);
         }
         else if (PlayerTrans.position.x - transform.position.x < -CameraXLimit)
         {
             Vector3 tmp = transform.position;
             tmp.x = PlayerTrans.position.x + CameraXLimit;
             //transform.position = tmp;
-            transform.DOLocalMove(tmp, 0.2f);
+            transform.DOLocalMove(tmp, 0.3f);
         }
     }
 }
