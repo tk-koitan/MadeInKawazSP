@@ -88,7 +88,7 @@ public class Ball : MonoBehaviour
         Ball mBall;
 
         [SerializeField]
-        float mSideWall = 4f;
+        float mSideWall = 10f;
 
         public Wall(Ball mBall)
         {
