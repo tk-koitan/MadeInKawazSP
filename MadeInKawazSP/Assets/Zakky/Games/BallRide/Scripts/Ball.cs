@@ -18,6 +18,7 @@ public class Ball : MonoBehaviour
 
     [SerializeField]
     Wall mWall;
+    [SerializeField]
     MousePos mMousePos;
 
     void Awake()
@@ -110,12 +111,21 @@ public class Ball : MonoBehaviour
         }
     }
 
+    [System.Serializable]
     public class MousePos
     {
         Vector3 mOldPos;
 
         float mXInput;
         float mTime;
+
+        enum XInputMode
+        {
+            DRAG_X_DIRECTION,
+            SCREEN_LEFT_OR_RIGHT
+        }
+        [SerializeField]
+        XInputMode mXInputMode = XInputMode.SCREEN_LEFT_OR_RIGHT;
 
         public MousePos()
         {
@@ -128,17 +138,28 @@ public class Ball : MonoBehaviour
             if (mTime != Time.time)
             {
                 mTime = Time.time;
-
                 float result = 0f;
-
-                if (Input.GetMouseButton(0))
+                switch (mXInputMode)
                 {
-                    result = System.Math.Sign(CurrentMousePos().x - mOldPos.x);
+                    case XInputMode.DRAG_X_DIRECTION:
+                        
+                        if (Input.GetMouseButton(0))
+                        {
+                            result = System.Math.Sign(CurrentMousePos().x - mOldPos.x);
+                        }
+                        mOldPos = CurrentMousePos();
+                        mXInput = result;
+                        break;
+
+                    case XInputMode.SCREEN_LEFT_OR_RIGHT:
+
+                        if (Input.GetMouseButton(0))
+                        {
+                            result = System.Math.Sign(CurrentMousePos().x - Screen.width / 2);
+                        }
+                        mXInput = result;
+                        break;
                 }
-
-                mOldPos = CurrentMousePos();
-
-                mXInput = result;
             }
             return mXInput;
         }
