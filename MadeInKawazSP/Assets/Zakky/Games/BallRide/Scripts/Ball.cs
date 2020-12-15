@@ -117,6 +117,7 @@ public class Ball : MonoBehaviour
         Vector3 mOldPos;
 
         float mXInput;
+        //ここゲームのフレームレート参照してやったほういい
         float mTime;
 
         enum XInputMode
@@ -127,9 +128,36 @@ public class Ball : MonoBehaviour
         [SerializeField]
         XInputMode mXInputMode = XInputMode.SCREEN_LEFT_OR_RIGHT;
 
+        System.Func<float>[] mMouseXInputFunc;
+
         public MousePos()
         {
             mTime = Time.time;
+
+            mMouseXInputFunc = new System.Func<float>[(int)XInputMode.SCREEN_LEFT_OR_RIGHT + 1];
+            mMouseXInputFunc[(int)XInputMode.DRAG_X_DIRECTION] = DragXDirection;
+            mMouseXInputFunc[(int)XInputMode.SCREEN_LEFT_OR_RIGHT] = ScreenLeftOrRight;
+        }
+
+        float DragXDirection()
+        {
+            float result = 0f;
+            if (Input.GetMouseButton(0))
+            {
+                result = System.Math.Sign(Input.mousePosition.x - mOldPos.x);
+            }
+            mOldPos = Input.mousePosition;
+            return result;
+        }
+
+        float ScreenLeftOrRight()
+        {
+            float result = 0f;
+            if (Input.GetMouseButton(0))
+            {
+                result = System.Math.Sign(Input.mousePosition.x - Screen.width / 2);
+            }
+            return result;
         }
 
         //返り値は-1, 0, 1のいずれか
@@ -138,41 +166,9 @@ public class Ball : MonoBehaviour
             if (mTime != Time.time)
             {
                 mTime = Time.time;
-                float result = 0f;
-                switch (mXInputMode)
-                {
-                    case XInputMode.DRAG_X_DIRECTION:
-                        
-                        if (Input.GetMouseButton(0))
-                        {
-                            result = System.Math.Sign(CurrentMousePos().x - mOldPos.x);
-                        }
-                        mOldPos = CurrentMousePos();
-                        mXInput = result;
-                        break;
-
-                    case XInputMode.SCREEN_LEFT_OR_RIGHT:
-
-                        if (Input.GetMouseButton(0))
-                        {
-                            result = System.Math.Sign(CurrentMousePos().x - Screen.width / 2);
-                        }
-                        mXInput = result;
-                        break;
-                }
+                mXInput = mMouseXInputFunc[(int)mXInputMode]();
             }
             return mXInput;
-        }
-
-        Vector3 CurrentMousePos()
-        {
-            Vector3 touchScreenPosition = Input.mousePosition;
-
-            // 1.0fに深い意味は無い。でもとるとなんかバグる
-            //touchScreenPosition.z = 10.0f;
-            //Vector3 mousePos = Camera.main.ScreenToWorldPoint(touchScreenPosition);
-
-            return touchScreenPosition;
         }
 
         public bool IsMouseXDragged()

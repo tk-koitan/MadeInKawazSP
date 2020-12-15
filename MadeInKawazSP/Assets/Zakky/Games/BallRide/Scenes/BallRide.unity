@@ -143,6 +143,8 @@ MonoBehaviour:
   mGestureHand: {fileID: 1928363201}
   mWall:
     mSideWall: 100
+  mMousePos:
+    mXInputMode: 0
 --- !u!50 &13160722
 Rigidbody2D:
   serializedVersion: 4
