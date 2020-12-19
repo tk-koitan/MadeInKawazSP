@@ -132,7 +132,8 @@ public class Ball : MonoBehaviour
 
         public MousePos()
         {
-            mTime = Time.time;
+            //ビルドできなかったため by koitan
+            //mTime = Time.time;
 
             mMouseXInputFunc = new System.Func<float>[(int)XInputMode.SCREEN_LEFT_OR_RIGHT + 1];
             mMouseXInputFunc[(int)XInputMode.DRAG_X_DIRECTION] = DragXDirection;
