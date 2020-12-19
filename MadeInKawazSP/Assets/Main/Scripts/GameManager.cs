@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     private bool FinishFlag;
     public static bool IsGamePlaying { get; private set; }
     private static Queue<int> gameQueue = new Queue<int>();
+    private static List<int> gameList = new List<int>();
+    private static int gameIntervalCnt = 10;
     public Texture2D tex;
     [SerializeField]
     private int speedUpIntervalCount = 1;
@@ -187,6 +189,7 @@ public class GameManager : MonoBehaviour
         numberMesh.text = number.ToString();
         numberMesh.gameObject.SetActive(false);
         gameQueue.Clear();
+        gameList.Clear();
         ClearFlag = false;
         numberMesh.transform.localScale = Vector3.one;
         if (isTestPlay)
@@ -195,6 +198,8 @@ public class GameManager : MonoBehaviour
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("ManagerScene"));
             SceneManager.UnloadSceneAsync(currentGame.sceneName);
         }
+        //gameListを初期化
+        InitializeGamePackage();
         currentGame = LoadGamePackage();
         if (mode == PlayMode.Normal)
         {
@@ -562,6 +567,30 @@ public class GameManager : MonoBehaviour
             });
     }
 
+    void InitializeGamePackage()
+    {
+        int[] indexList = new int[gamePackageSet.games.Length];
+        for (int i = 0; i < gamePackageSet.games.Length; i++)
+        {
+            indexList[i] = i;
+        }
+        for (int i = 0; i < gamePackageSet.games.Length; i++)
+        {
+            int rand = UnityEngine.Random.Range(i, indexList.Length);
+            int tmp = indexList[rand];
+            indexList[rand] = indexList[i];
+            indexList[i] = tmp;
+        }
+        for (int i = 0; i < gameIntervalCnt; i++)
+        {
+            gameQueue.Enqueue(indexList[i]);
+        }
+        for (int i = gameIntervalCnt; i < gamePackageSet.games.Length; i++)
+        {
+            gameList.Add(indexList[i]);
+        }
+    }
+
     GamePackage LoadGamePackage()
     {
         GamePackage package;
@@ -570,6 +599,8 @@ public class GameManager : MonoBehaviour
         {
             case PlayMode.Normal:
                 //次のシーン読み込み
+                //過去の実装
+                /*
                 if (gameQueue.Count == 0)
                 {
                     int[] indexList = new int[gamePackageSet.games.Length];
@@ -590,6 +621,14 @@ public class GameManager : MonoBehaviour
                     }
                 }
                 package = gamePackageSet.games[gameQueue.Dequeue()];
+                */
+                //gameIntervalCntだけ同じゲームがでないようにする
+                int rand = UnityEngine.Random.Range(0, gameList.Count);
+                int index = gameList[rand];
+                gameList.RemoveAt(rand);
+                gameQueue.Enqueue(index);
+                gameList.Add(gameQueue.Dequeue());
+                package = gamePackageSet.games[index];
                 break;
             default:
                 package = singleGame;
