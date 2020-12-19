@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Koitan/CoinPusher/Scenes/CoinPusher.unity
     guid: a857c158017bb1640a18500bccdb040b
+  - enabled: 1
+    path: Assets/Zakky/Games/SetsunaMogura/Scenes/MoguraTataki.unity
+    guid: 6ab7eab70de7015478e30bc74bb81559
   m_configObjects: {}
