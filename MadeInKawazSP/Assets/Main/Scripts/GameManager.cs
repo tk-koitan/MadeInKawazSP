@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
         {
             highScoreMesh.text = "ハイスコア：" + System.String.Format("{0, 3}", ScoreManager.Instance.GetScoreData().Scores[0].ToString());
         }
-        else
+        else if (mode == PlayMode.Single)
         {
             highScoreMesh.text = "ハイスコア：" + System.String.Format("{0, 3}", ScoreManager.Instance.GetScoreData(currentGame.sceneName).Scores[0].ToString());
         }
