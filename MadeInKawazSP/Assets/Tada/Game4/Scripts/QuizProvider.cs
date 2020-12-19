@@ -47,7 +47,7 @@ namespace TadaGame4
             // 答えの表示
             teaher_.PrintAnswer(ans, interval_);
 
-            yield return new WaitForSeconds(interval_ * block_num_);
+            yield return new WaitForSeconds(interval_ * answer_length_);
 
             // 回答させる
             answer_.ReceiveAnswer(ans);

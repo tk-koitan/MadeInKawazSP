@@ -150,12 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5f958b797a86443bde296ffe81e31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  begin_wait_time_: 0.75
+  begin_wait_time_: 1
   interval_: 0.5
   teaher_: {fileID: 1176768445}
   answer_: {fileID: 997571100}
   block_num_: 4
-  answer_length_: 3
+  answer_length_: 4
 --- !u!4 &51229444
 Transform:
   m_ObjectHideFlags: 0
@@ -594,7 +594,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 5.3, y: 5.3}
   m_EdgeRadius: 0
 --- !u!1 &560914102
 GameObject:
@@ -703,7 +703,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 5.3, y: 5.3}
   m_EdgeRadius: 0
 --- !u!1 &584782677
 GameObject:
@@ -893,7 +893,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 5.3, y: 5.3}
   m_EdgeRadius: 0
 --- !u!1 &721095259
 GameObject:
@@ -1674,7 +1674,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 5.3, y: 5.3}
   m_EdgeRadius: 0
 --- !u!1 &1749309530
 GameObject:

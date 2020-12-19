@@ -59,6 +59,8 @@ namespace TadaGame4
                     {
                         GameManager.Clear();
                         is_started_ = false;
+                        // ボタンをひからせる
+                        FlashBlockAll();
                     }
                 }
                 else
@@ -87,6 +89,27 @@ namespace TadaGame4
             }
 
             return -1;
+        }
+
+        private void FlashBlockAll()
+        {
+            StartCoroutine(FlashAll(flash_interval_));
+        }
+
+        private IEnumerator FlashAll(float interval)
+        {
+            yield return new WaitForSeconds(interval * 3f);
+
+            while (true)
+            {
+                for(int i = 0; i < blocks_.Count; i += 2)
+                {
+                    FlashBlock(blocks_[i]);
+                    FlashBlock(blocks_[(i + blocks_.Count - 1) % blocks_.Count]);
+
+                    yield return new WaitForSeconds(interval * 1.1f);
+                }
+            }
         }
 
         private void FlashBlock(SpriteRenderer block)
