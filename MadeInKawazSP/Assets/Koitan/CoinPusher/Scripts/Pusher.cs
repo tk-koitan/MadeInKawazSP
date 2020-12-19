@@ -20,6 +20,8 @@ namespace CoinPusher
         int coinNum;
         [SerializeField]
         TextMeshProUGUI textMesh;
+        [SerializeField]
+        GameObject[] Hanabis;
         // Start is called before the first frame update
         void Start()
         {
@@ -39,11 +41,18 @@ namespace CoinPusher
                 coinNum--;
                 Vector3 tmpPos = Input.mousePosition;
                 tmpPos.y = Screen.height / 5 * 3;
-                tmpPos.z = 10f;
+                tmpPos.z = 8f;
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(tmpPos);
                 Instantiate(coin, mousePos, Quaternion.Euler(90, 0, 0));
             }
             textMesh.text = "のこり<size=150%><color=red>" + coinNum.ToString() + "</color></size>枚";
+            if(GameManager.ClearFlag)
+            {
+                foreach(GameObject obj in Hanabis)
+                {
+                    obj.SetActive(true);
+                }
+            }
         }
     }
 }
