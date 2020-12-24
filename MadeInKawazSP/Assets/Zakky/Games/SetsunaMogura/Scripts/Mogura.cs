@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class Mogura : MonoBehaviour
 {
-    float PyonTime;
     ZakkyLib.Timer mMoguraTimer;
     bool mHasClearCheck;
     enum MoguraState
@@ -26,7 +25,7 @@ public class Mogura : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PyonTime = Random.Range(1f, 3f);
+        float PyonTime = Random.Range(1f, 3f);
         mMoguraTimer = new ZakkyLib.Timer(PyonTime);
         mHasClearCheck = false;
         mAudioSource = GetComponent<AudioSource>();
