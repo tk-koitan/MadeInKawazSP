@@ -15,12 +15,21 @@ public class Mogura : MonoBehaviour
         Kakure
     }
     MoguraState mMoguraState = MoguraState.Moguri;
+
+    AudioSource mAudioSource;
+    [SerializeField]
+    AudioClip[] mTappedSFX;
+
+    [SerializeField]
+    Transform mCameraTrans;
+
     // Start is called before the first frame update
     void Start()
     {
         PyonTime = Random.Range(1f, 3f);
         mMoguraTimer = new ZakkyLib.Timer(PyonTime);
-        mHasClearCheck = true;
+        mHasClearCheck = false;
+        mAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,25 +40,36 @@ public class Mogura : MonoBehaviour
             mMoguraState = MoguraState.Moving;
             transform.DOMoveY(transform.position.y + 1.8f, 0.5f).SetEase(Ease.InOutExpo).SetLoops(2, LoopType.Yoyo).OnComplete(() =>
             {
-
-                //transform.DOMoveY(0f, 0.5f).OnComplete(() =>
-                //{
-                    mMoguraState = MoguraState.Kakure;
-                //});
+                mMoguraState = MoguraState.Kakure;
             });
         }
 
-        if (Input.GetMouseButtonDown(0) && mHasClearCheck)
+        if (Input.GetMouseButtonDown(0) && !mHasClearCheck)
         {
-            if (mMoguraState == MoguraState.Moving)
+            Vector3 camPos = Input.mousePosition;
+            camPos.z = -mCameraTrans.position.z;
+            camPos = Camera.main.ScreenToWorldPoint(camPos);
+
+            if (mMoguraState == MoguraState.Moving &&
+                Vector2.Distance(
+                    camPos,
+                    transform.position) < 1f
+                    )
             {
                 GameManager.Clear();
+                transform.DOKill();
+                mAudioSource.PlayOneShot(mTappedSFX[0]);
             }
             else
             {
-                mHasClearCheck = false;
+                mAudioSource.PlayOneShot(mTappedSFX[1]);
             }
+            mHasClearCheck = true;
+            Debug.Log(Vector2.Distance(
+                    camPos,
+                    transform.position)
+                );
+            Debug.Log(camPos.x + " " + camPos.y);
         }
-        
     }
 }
