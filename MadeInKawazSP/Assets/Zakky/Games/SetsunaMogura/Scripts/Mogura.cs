@@ -29,7 +29,7 @@ public class Mogura : MonoBehaviour
         if (mMoguraTimer.IsTimeout() && mMoguraState == MoguraState.Moguri)
         {
             mMoguraState = MoguraState.Moving;
-            transform.DOMoveY(1f, 0.3f).SetEase(Ease.InOutExpo).SetLoops(2, LoopType.Yoyo).OnComplete(() =>
+            transform.DOMoveY(transform.position.y + 1.8f, 0.5f).SetEase(Ease.InOutExpo).SetLoops(2, LoopType.Yoyo).OnComplete(() =>
             {
 
                 //transform.DOMoveY(0f, 0.5f).OnComplete(() =>
