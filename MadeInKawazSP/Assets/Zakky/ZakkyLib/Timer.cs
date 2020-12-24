@@ -33,5 +33,10 @@ namespace ZakkyLib
         {
             return Time.time - start_time_;
         }
+
+        public float OverTimeRate()
+        {
+            return GetTime() / limit_time_;
+        }
     }
 }
