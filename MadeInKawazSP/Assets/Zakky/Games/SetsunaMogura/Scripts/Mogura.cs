@@ -50,10 +50,7 @@ public class Mogura : MonoBehaviour
             camPos = Camera.main.ScreenToWorldPoint(camPos);
 
             if (mMoguraState == MoguraState.Moving &&
-                Vector2.Distance(
-                    camPos,
-                    transform.position) < 1f
-                    )
+                Vector2.Distance(camPos, transform.position) < 1f)
             {
                 GameManager.Clear();
                 transform.DOKill();
@@ -64,11 +61,6 @@ public class Mogura : MonoBehaviour
                 mAudioSource.PlayOneShot(mTappedSFX[1]);
             }
             mHasClearCheck = true;
-            Debug.Log(Vector2.Distance(
-                    camPos,
-                    transform.position)
-                );
-            Debug.Log(camPos.x + " " + camPos.y);
         }
     }
 }
