@@ -6,7 +6,9 @@ using DG.Tweening;
 public class Mogura : MonoBehaviour
 {
     ZakkyLib.Timer mMoguraTimer;
+
     bool mHasClearCheck;
+
     enum MoguraState
     {
         Moguri,
@@ -34,6 +36,13 @@ public class Mogura : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MoguraMove();
+
+        ClearCheck();
+    }
+
+    void MoguraMove()
+    {
         if (mMoguraTimer.IsTimeout() && mMoguraState == MoguraState.Moguri)
         {
             mMoguraState = MoguraState.Moving;
@@ -42,7 +51,10 @@ public class Mogura : MonoBehaviour
                 mMoguraState = MoguraState.Kakure;
             });
         }
+    }
 
+    void ClearCheck()
+    {
         if (Input.GetMouseButtonDown(0) && !mHasClearCheck)
         {
             Vector3 camPos = Input.mousePosition;
