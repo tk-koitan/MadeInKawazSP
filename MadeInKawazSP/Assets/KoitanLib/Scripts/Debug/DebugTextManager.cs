@@ -15,6 +15,8 @@ public class DebugTextManager : MonoBehaviour
     void Start()
     {
         debugText.text = string.Empty;
+        //デフォルトでOFF
+        debugCanvas.SetActive(false);
     }
 
     // Update is called once per frame
