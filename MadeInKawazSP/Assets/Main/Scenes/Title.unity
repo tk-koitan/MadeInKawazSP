@@ -1505,8 +1505,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30E1\u30A4\u30C9\u30A4\u30F3\nKawaz"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 467641aa3fc2c4688859c6eb9bc550d5, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: d86b6550bacfb475681b6ebca3498dc8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2588ba2c859e64936b86479d819bdd62, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b66f466cc8c89408083510a1f55725c6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2602,8 +2602,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u89E3\u50CF\u5EA6\u8A2D\u5B9A"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 467641aa3fc2c4688859c6eb9bc550d5, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: d86b6550bacfb475681b6ebca3498dc8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2588ba2c859e64936b86479d819bdd62, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b66f466cc8c89408083510a1f55725c6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
