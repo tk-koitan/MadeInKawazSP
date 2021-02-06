@@ -11,20 +11,23 @@ namespace TadaGame3
     public class TouchRotateChecker : MonoBehaviour
     {
         private Vector3 center_position_;
-        private float rotate_power_ = 1.0f;
+        private float rotate_power_;
 
-        private float length_;
+        private float rot_;
 
         private Vector3 prev_pos_;
 
         private bool prev_touched_;
 
-        public void Init(Vector3 center_position, float rotate_power = 1.0f)
+        [SerializeField]
+        private Animator gesture_;
+
+        public void Init(Vector3 center_position, float rotate_power = 3.0f)
         {
             center_position_ = center_position;
             rotate_power_ = rotate_power;
 
-            length_ = 0.0f;
+            rot_ = 0.0f;
 
             prev_touched_ = false;
         }
@@ -44,9 +47,9 @@ namespace TadaGame3
 
                     float rotate_dif = (Mathf.Atan2(cur_dif.y, cur_dif.x) - Mathf.Atan2(prev_dif.y, prev_dif.x)) * Mathf.Rad2Deg;
 
-                    float distance_rate = Vector2.SqrMagnitude(cur_dif) / Vector2.SqrMagnitude(prev_dif);
-
-                    length_ += rotate_dif * rotate_power_;// * distance_rate;
+                    // タッチが下側の場合のみ回転させる
+                    if(cur_dif.y <= 0.0f)
+                        rot_ += rotate_dif * rotate_power_;
 
                     prev_pos_ = cur_pos;
                 }
@@ -55,6 +58,7 @@ namespace TadaGame3
             {
                 if (Input.GetMouseButton(0))
                 {
+                    if (gesture_.gameObject.activeSelf) gesture_.gameObject.SetActive(false);
                     prev_touched_ = true;
                     prev_pos_ = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 }
@@ -64,8 +68,8 @@ namespace TadaGame3
         // 前回からどれくらい開店したか
         public float GetRotateLength()
         {
-            float tmp = length_;
-            length_ = 0.0f;
+            float tmp = rot_;
+            rot_ = 0.0f;
             return tmp;
         }
     }
