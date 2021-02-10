@@ -42,9 +42,7 @@ namespace TadaGame3
             foreach(var meteo in meteos)
             {
                 // 角度を決める
-                float angle = Random.Range(60f, 120f);
-                float rand = Random.Range(0.0f, 1.0f);
-                if (rand < 0.5f) angle += 180f;
+                float angle = Random.Range(240f, 300f);
                 angle *= Mathf.Deg2Rad;
 
                 Vector3 dir = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0.0f);
@@ -56,11 +54,18 @@ namespace TadaGame3
                 // 2回点滅
                 float alpha = 0.0f;
 
+                // 時間経過の誤差をなくす
+                float prev_time = Time.time;
+                float wait_time = meteo_interval_ * 0.25f;
+                float over_time = 0.0f;
+
                 for(int i = 0; i < 4; ++i)
                 {
                     alpha = 1f - alpha;
                     meteo_warning_.DOFade(alpha, meteo_interval_ * 0.24f);
-                    yield return new WaitForSeconds(meteo_interval_ * 0.25f);
+                    yield return new WaitForSeconds(wait_time - over_time);
+                    over_time = (Time.time - prev_time) - wait_time;
+                    prev_time = Time.time - over_time;
                 }
 
                 meteo.Init(dir * -distance_, meteo_speed_, dir);

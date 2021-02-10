@@ -22,7 +22,7 @@ namespace TadaGame3
         [SerializeField]
         private Animator gesture_;
 
-        public void Init(Vector3 center_position, float rotate_power = 3.0f)
+        public void Init(Vector3 center_position, float rotate_power = 2.0f)
         {
             center_position_ = center_position;
             rotate_power_ = rotate_power;
@@ -47,8 +47,8 @@ namespace TadaGame3
 
                     float rotate_dif = (Mathf.Atan2(cur_dif.y, cur_dif.x) - Mathf.Atan2(prev_dif.y, prev_dif.x)) * Mathf.Rad2Deg;
 
-                    // タッチが下側の場合のみ回転させる
-                    if(cur_dif.y <= 0.0f)
+                    // タッチが上側の場合のみ回転させる
+                    if(cur_dif.y >= 0.0f)
                         rot_ += rotate_dif * rotate_power_;
 
                     prev_pos_ = cur_pos;
