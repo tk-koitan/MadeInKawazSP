@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdb1034ebb819460397b1bf6f8150383, type: 3}
-  m_Name: TestPlayPackage
+  m_Name: Nishida
   m_EditorClassIdentifier: 
   sceneName: Nishida
-  titleName: 
-  authorName: 
-  developerName: 
+  titleName: aaa
+  authorName: aaa
+  developerName: aaa
   statement: "\u306B\u3057\u3060"
-  explanation: 
+  explanation: aaa
   gameType: 0
-  iconImage: {fileID: 0}
-  screenshotImage: {fileID: 0}
+  iconImage: {fileID: 21300000, guid: 5dc1c20b7ae209f42bb2f6616285b612, type: 3}
+  screenshotImage: {fileID: 21300000, guid: 5dc1c20b7ae209f42bb2f6616285b612, type: 3}
