@@ -71,7 +71,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Koitan/FrickInput/Scenes/FrickInput.unity
     guid: cb4f4a9df5c5fc6428cce0e72037cc09
-  - enabled: 1
-    path: Assets/Koitan/Nishida/Nishida.unity
-    guid: f0985297b1bcf6a45802769b294bfdea
   m_configObjects: {}

@@ -7,6 +7,7 @@ public class GamePackage : ScriptableObject
     public string titleName;
     public string authorName;
     public string developerName;
+    [Multiline(3)]
     public string statement;
     [Multiline(3)]
     public string explanation;
